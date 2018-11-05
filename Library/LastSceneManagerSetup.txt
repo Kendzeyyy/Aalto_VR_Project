@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/EasyGrassSubstance/Example Scene/DemoScene.unity
+- path: Assets/LightRoom.unity
   isLoaded: 1
   isActive: 1
