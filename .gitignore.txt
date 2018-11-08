@@ -1,2 +1,4 @@
 Assets
 Library
+Temp
+Temp/UnityLockfile
