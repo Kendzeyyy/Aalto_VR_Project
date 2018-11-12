@@ -2,3 +2,24 @@ Assets
 Library
 Temp
 Temp/UnityLockfile
+
+[Ll]ibrary
+[Tt]emp
+[Oo]bj
+[Bb]uild
+[Bb]uilds
+
+# Folder to exclude
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Builds/
+ipch/
+Library/
+obj/
+Temp/
+UWP/
+WindowsStore/
+WS/
+UnityVS/
+UnityVS.meta
