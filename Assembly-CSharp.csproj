@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CubeRotate.cs" />
      <Compile Include="Assets\Scripts\Floater.cs" />
+     <Compile Include="Assets\Scripts\MovingCube.cs" />
      <Compile Include="Assets\Scripts\TestScript.cs" />
      <Compile Include="Assets\Scripts\Texts.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
@@ -159,10 +160,6 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
-     <Compile Include="Assets\Textures\SimpleCumulus\Demo\Scripts\Player\FPSWalkerEnhanced.cs" />
-     <Compile Include="Assets\Textures\SimpleCumulus\Demo\Scripts\Player\SmoothMouseLook.cs" />
-     <Compile Include="Assets\Textures\SimpleCumulus\Demo\Scripts\Skybox\SkyboxChanger.cs" />
-     <Compile Include="Assets\Textures\SimpleCumulus\Demo\Scripts\Skybox\SkyboxRotator.cs" />
      <Compile Include="Assets\Textures\Stellar Sky\Demo\CameraController.cs" />
      <Compile Include="Assets\ViveGrip\ClassTypeReference\ClassTypeConstraintAttribute.cs" />
      <Compile Include="Assets\ViveGrip\ClassTypeReference\ClassTypeReference.cs" />
