@@ -22,7 +22,7 @@ public class MovingCube : MonoBehaviour
 
         if (targetTime <= 0.0f)
         {
-            // Moving the cubes slowly towards camera
+            // Moving the cubes slowly backwards
             transform.Translate(0f, 0f, -0.1f * Time.deltaTime);
             timerEnded();
         }
