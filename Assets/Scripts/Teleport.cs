@@ -44,7 +44,7 @@ public class Teleport : MonoBehaviour {
 		{
 			theCube1.transform.position = teleportTarget.transform.position;
 
-		}
+        }
 		else if (collider.gameObject.tag == "cube2")
 		{
 			theCube2.transform.position = teleportTarget.transform.position;
