@@ -23,3 +23,6 @@ WindowsStore/
 WS/
 UnityVS/
 UnityVS.meta
+
+.vs/
+.git
