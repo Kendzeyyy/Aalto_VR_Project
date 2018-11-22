@@ -23,3 +23,5 @@ WindowsStore/
 WS/
 UnityVS/
 UnityVS.meta
+
+.vs/
