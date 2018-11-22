@@ -15,6 +15,7 @@ TagManager:
   - cube9
   - cube10
   - cube11
+  - RemainsCube
   layers:
   - Default
   - TransparentFX

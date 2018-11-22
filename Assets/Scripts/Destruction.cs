@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class Destruction : MonoBehaviour {
 
-    public GameObject theCube1;
+	public GameObject remains;
 
-    // Use this for initialization
-    void Start()
-    {
-        theCube1 = GameObject.FindWithTag("cube1");
-    }
+	// Use this for initialization
+	void Start()
+	{
+		remains = GameObject.FindWithTag("RemainsCube");
+	}
+	// Update is called once per frame
+	void Update()
+	{
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
+	}
+
+	void OnTriggerEnter(Collider collider)
+	{
+		if (collider.gameObject.name == "DestroyCubes")
         {
-            Destroy(theCube1);
-        }
+			Destroy(collider.gameObject);
+			
+		}
     }
 }
