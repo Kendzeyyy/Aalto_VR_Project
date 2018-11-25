@@ -55,7 +55,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CubeRotate.cs" />
      <Compile Include="Assets\Scripts\Destruction.cs" />
-     <Compile Include="Assets\Scripts\Explosion.cs" />
      <Compile Include="Assets\Scripts\Floater.cs" />
      <Compile Include="Assets\Scripts\MovingCube.cs" />
      <Compile Include="Assets\Scripts\Teleport.cs" />
