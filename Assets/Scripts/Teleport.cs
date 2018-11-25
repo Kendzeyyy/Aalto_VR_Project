@@ -16,6 +16,7 @@ public class Teleport : MonoBehaviour {
 	public GameObject theCube9;
 	public GameObject theCube10;
 	public GameObject theCube11;
+	public GameObject theCube12;
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +31,7 @@ public class Teleport : MonoBehaviour {
 		theCube9 = GameObject.FindWithTag("cube9");
 		theCube10 = GameObject.FindWithTag("cube10");
 		theCube11 = GameObject.FindWithTag("cube11");
+		theCube12 = GameObject.FindWithTag("cube12");
 	}
 	
 	// Update is called once per frame
@@ -84,6 +86,10 @@ public class Teleport : MonoBehaviour {
 		else if (collider.gameObject.tag == "cube11")
 		{
 			theCube11.transform.position = teleportTarget.transform.position;
+		}
+		else if (collider.gameObject.tag == "cube12")
+		{
+			theCube12.transform.position = teleportTarget.transform.position;
 		}
 	}
 }
