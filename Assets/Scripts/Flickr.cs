@@ -17,7 +17,7 @@ public class Flickr : MonoBehaviour
     // private FlickrNet.Flickr myFlickr;     //flickrnet didnt work with unity..
 
     private string myApiKey = Secrets.myApiKey;
-    private string mySecretKey = Secrets.mySecretKey;
+    //private string mySecretKey = Secrets.mySecretKey;
     private string userid = Secrets.userid;
     private string flickrFrob = "";
     private string token = "";
