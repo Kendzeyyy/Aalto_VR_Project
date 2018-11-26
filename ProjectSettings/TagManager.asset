@@ -22,6 +22,7 @@ TagManager:
   - Screen1
   - Screen2
   - Screen3
+  - Flicker
   layers:
   - Default
   - TransparentFX

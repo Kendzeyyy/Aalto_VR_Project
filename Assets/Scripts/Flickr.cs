@@ -29,98 +29,107 @@ public class Flickr : MonoBehaviour
     private string maxTakenDate = "";
     List<string> flickrpicturelist = new List<string>();
 
+    public GameObject flickrCube;
 
     // Use this for initialization
-    IEnumerator Start()
+    void Start() {
+        flickrCube = GameObject.FindWithTag("Flicker");
+
+    }
+
+    IEnumerator OnTriggerEnter(Collider collider)
     {
-        //texture things..in unity.
-        Texture2D tex;
-        tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
-
-        //api call example
-        //https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=0579d5b4256b91929f80cea37fb63f8c&user_id=134653989%40N07&min_upload_date=1.1.2018&max_upload_date=31.12.2018&min_taken_date=&max_taken_date=&content_type=&format=json&nojsoncallback=1&auth_token=72157702486478861-fa74bb8610aa766e&api_sig=4122e3678f6107dc4ad280c07952b2f3
-        var noSignUrl = "https://api.flickr.com/services/rest/" +
-            "?method=flickr.people.getPhotos" +
-            "&api_key=0579d5b4256b91929f80cea37fb63f8c" +
-            "&user_id=134653989%40N07" +
-            "&min_upload_date=1.1.2018=" +
-            "&max_upload_date=31.12.2018" +
-            "&min_taken_date=" +
-            "&max_taken_date=" +
-            "&content_type=" +
-            "&format=json" +
-            "&nojsoncallback=1" +
-            "&auth_token=72157702486478861-fa74bb8610aa766e" +
-            "&api_sig=f7b42ae3f1fc127d93bc0f141bdbf590";
-
-
-        //this one we use, values binded to get flexible usage
-        url = "https://api.flickr.com/services/rest/" +
-            "?method=flickr.people.getPhotos" +
-            "&api_key={0}" +
-            "&user_id={1}" +
-            "&min_upload_date={2}=" +
-            "&max_upload_date={3}" +
-            "&min_taken_date=" +
-            "&max_taken_date=" +
-            "&content_type=" +
-            "&format=json" +
-            "&nojsoncallback=1";
-
-
-        //these can be set from cubes' values .. so tag them here. now hardcoded.
-        minUploadDate = "24.11.2018";
-        maxUploadDate = "31.12.2018";
-
-        var baseUrl = string.Format(url, myApiKey, userid, minUploadDate, maxUploadDate);
-        Debug.Log("this is the api url request BASEURL " + baseUrl);
-
-        //ok so httpwebreq cant handle SHA256 Certificate, use unitywebrequest or www instead. 
-        using (WWW www = new WWW(baseUrl))
+        Debug.Log("COLLIDED WITH SOMETHING!!!!");
+        if (collider.gameObject.name == "Flickr")
         {
-            yield return www;
-            Debug.Log("this is WWW call " + www);
-                        
-            string flickrResult = www.text;
-            Debug.Log("this is supposed to be the json from server: " + flickrResult);
-            FlickrData apiData = JsonConvert.DeserializeObject<FlickrData>(flickrResult);
+            Debug.Log("COLLIDED WITH FLICKER CUBE");
 
-            foreach (Photo data in apiData.photos.photo)
+            //texture things..in unity.
+            Texture2D tex;
+            tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
+
+            //api call example
+            //https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=0579d5b4256b91929f80cea37fb63f8c&user_id=134653989%40N07&min_upload_date=1.1.2018&max_upload_date=31.12.2018&min_taken_date=&max_taken_date=&content_type=&format=json&nojsoncallback=1&auth_token=72157702486478861-fa74bb8610aa766e&api_sig=4122e3678f6107dc4ad280c07952b2f3
+            var noSignUrl = "https://api.flickr.com/services/rest/" +
+                "?method=flickr.people.getPhotos" +
+                "&api_key=0579d5b4256b91929f80cea37fb63f8c" +
+                "&user_id=134653989%40N07" +
+                "&min_upload_date=1.1.2018=" +
+                "&max_upload_date=31.12.2018" +
+                "&min_taken_date=" +
+                "&max_taken_date=" +
+                "&content_type=" +
+                "&format=json" +
+                "&nojsoncallback=1" +
+                "&auth_token=72157702486478861-fa74bb8610aa766e" +
+                "&api_sig=f7b42ae3f1fc127d93bc0f141bdbf590";
+
+
+            //this one we use, values binded to get flexible usage
+            url = "https://api.flickr.com/services/rest/" +
+                "?method=flickr.people.getPhotos" +
+                "&api_key={0}" +
+                "&user_id={1}" +
+                "&min_upload_date={2}=" +
+                "&max_upload_date={3}" +
+                "&min_taken_date=" +
+                "&max_taken_date=" +
+                "&content_type=" +
+                "&format=json" +
+                "&nojsoncallback=1";
+
+
+            //these can be set from cubes' values .. so tag them here. now hardcoded.
+            minUploadDate = "24.11.2018";
+            maxUploadDate = "31.12.2018";
+
+            var baseUrl = string.Format(url, myApiKey, userid, minUploadDate, maxUploadDate);
+            Debug.Log("this is the api url request BASEURL " + baseUrl);
+
+            //ok so httpwebreq cant handle SHA256 Certificate, use unitywebrequest or www instead. 
+            using (WWW www = new WWW(baseUrl))
             {
-                //retrieve one photo: 
-                // http://farm{farmid}.staticflickr.com/{server-id}/{id}_{secret}{size}.jpg
-                
-                string photoUrl = "http://farm{0}.staticflickr.com/{1}/{2}_{3}_n.jpg";
+                yield return www;
+                Debug.Log("this is WWW call " + www);
 
-                string baseFlickrUrl = string.Format(photoUrl,
-                    data.farm,
-                    data.server,
-                    data.id,
-                    data.secret);
+                string flickrResult = www.text;
+                Debug.Log("this is supposed to be the json from server: " + flickrResult);
+                FlickrData apiData = JsonConvert.DeserializeObject<FlickrData>(flickrResult);
 
-                Debug.Log("this is  image url for one image.. hopefully: " + baseFlickrUrl);
-                // yield return baseFlickrUrl;
-                //add picture's address to list.. 
-                flickrpicturelist.Add(baseFlickrUrl);
+                foreach (Photo data in apiData.photos.photo)
+                {
+                    //retrieve one photo: 
+                    // http://farm{farmid}.staticflickr.com/{server-id}/{id}_{secret}{size}.jpg
+
+                    string photoUrl = "http://farm{0}.staticflickr.com/{1}/{2}_{3}_n.jpg";
+
+                    string baseFlickrUrl = string.Format(photoUrl,
+                        data.farm,
+                        data.server,
+                        data.id,
+                        data.secret);
+
+                    Debug.Log("this is  image url for one image.. hopefully: " + baseFlickrUrl);
+                    // yield return baseFlickrUrl;
+                    //add picture's address to list.. 
+                    flickrpicturelist.Add(baseFlickrUrl);
 
 
-            }
-            //access list of pictures with certain api request like this
-            using (WWW xxx = new WWW(flickrpicturelist[0]))
-            {
-                yield return xxx;
-                xxx.LoadImageIntoTexture(tex);
-                GetComponent<Renderer>().material.mainTexture = tex;
+                }
+                //access list of pictures with certain api request like this
+                using (WWW xxx = new WWW(flickrpicturelist[0]))
+                {
+                    yield return xxx;
+                    xxx.LoadImageIntoTexture(tex);
+                    GetComponent<Renderer>().material.mainTexture = tex;
+                }
             }
         }
     }
 
-
     // Update is called once per frame
     void Update()
-    {
-
-    }
+        { }
 
 
     //stuff for flickr's api.. dont delete ! :)
