@@ -62,9 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AirFloating.cs" />
+    <Compile Include="Assets\Scripts\Class1.cs" />
     <Compile Include="Assets\Scripts\CubeRotate.cs" />
+    <Compile Include="Assets\Scripts\Flickr.cs" />
     <Compile Include="Assets\Scripts\Floater.cs" />
+    <Compile Include="Assets\Scripts\LoadImgScript.cs" />
     <Compile Include="Assets\Scripts\MovingCube.cs" />
+    <Compile Include="Assets\Scripts\Secrets.cs" />
     <Compile Include="Assets\Scripts\Teleport.cs" />
     <Compile Include="Assets\Scripts\TestScript.cs" />
     <Compile Include="Assets\Scripts\Texts.cs" />
@@ -210,6 +214,7 @@
     <None Include="Assets\ViveGrip\Examples\Materials\Hand.shader" />
     <None Include="Assets\Resources\CALVERT1.txt" />
     <None Include="Assets\Resources\CALVERT2.txt" />
+    <None Include="Assets\JsonDotNet\link.xml" />
     <None Include="Assets\Resources\TDZ.txt" />
     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
@@ -428,6 +433,9 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/Users/mikae/Downloads/Aalto_VR_Project-master/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/mikae/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
