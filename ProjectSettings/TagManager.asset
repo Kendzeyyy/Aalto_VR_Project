@@ -19,6 +19,9 @@ TagManager:
   - RemainsApi
   - Year
   - cube12
+  - Screen1
+  - Screen2
+  - Screen3
   layers:
   - Default
   - TransparentFX
