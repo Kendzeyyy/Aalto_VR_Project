@@ -29,21 +29,11 @@ public class Flickr : MonoBehaviour
     private string maxTakenDate = "";
     List<string> flickrpicturelist = new List<string>();
 
-    public GameObject flickrCube;
 
-    // Use this for initialization
-    void Start() {
-        flickrCube = GameObject.FindWithTag("Flicker");
 
-    }
 
-    IEnumerator OnTriggerEnter(Collider collider)
+    public IEnumerator OnCollisionEnter(Collision collision)
     {
-        Debug.Log("COLLIDED WITH SOMETHING!!!!");
-        if (collider.gameObject.name == "Flickr")
-        {
-            Debug.Log("COLLIDED WITH FLICKER CUBE");
-
             //texture things..in unity.
             Texture2D tex;
             tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
@@ -124,7 +114,9 @@ public class Flickr : MonoBehaviour
                     GetComponent<Renderer>().material.mainTexture = tex;
                 }
             }
-        }
+        
+
+
     }
 
     // Update is called once per frame
