@@ -6,14 +6,12 @@ public class TimeTravel : MonoBehaviour{
 
     public Transform teleportTarget;
     public GameObject player;
-    public GameObject year;
-    public string text;
+    public TextMesh year;
 
 
     // Use this for initialization
     void Start(){
         player = GameObject.FindWithTag("Player");
-        GetComponent<TextMesh>().text = "test";
 
     }
 
@@ -21,6 +19,7 @@ public class TimeTravel : MonoBehaviour{
     {
         if (collider.gameObject.tag == "Player"){
             player.transform.position = teleportTarget.transform.position;
+            year.text = "2017";
         }
     }
 }
