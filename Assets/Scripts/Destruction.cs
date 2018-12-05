@@ -6,6 +6,7 @@ public class Destruction : MonoBehaviour {
 
 	public GameObject remains;
 
+
 	// Use this for initialization
 	void Start(){
 
@@ -14,9 +15,11 @@ public class Destruction : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider){
-		if (collider.gameObject.name == "DestroyCubes"){
+		if (collider.gameObject.tag == "2019"){
+
+            Vector3 temp = gameObject.transform.position;
 			Destroy(gameObject);
-			Instantiate(remains);
+			Instantiate(remains,temp,Quaternion.identity);
 
 		}
     }
