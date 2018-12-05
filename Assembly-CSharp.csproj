@@ -77,6 +77,7 @@
      <Compile Include="Assets\Scripts\Flickr.cs" />
      <Compile Include="Assets\Scripts\Floater.cs" />
      <Compile Include="Assets\Scripts\LoadImgScript.cs" />
+     <Compile Include="Assets\Scripts\Movie.cs" />
      <Compile Include="Assets\Scripts\MovingCube.cs" />
      <Compile Include="Assets\Scripts\Secrets.cs" />
      <Compile Include="Assets\Scripts\Teleport.cs" />
