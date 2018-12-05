@@ -67,11 +67,8 @@
      <Compile Include="Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
      <Compile Include="Assets\Scripts\AirFloating.cs" />
-<<<<<<< HEAD
-     <Compile Include="Assets\Scripts\ColliderYearsLed.cs" />
-=======
      <Compile Include="Assets\Scripts\ApiSelector.cs" />
->>>>>>> d7aa512... Added Api-Selector and modified Flickr for universal screens
+     <Compile Include="Assets\Scripts\ColliderYearsLed.cs" />
      <Compile Include="Assets\Scripts\CubeRotate.cs" />
      <Compile Include="Assets\Scripts\Destruction.cs" />
      <Compile Include="Assets\Scripts\Flickr.cs" />
