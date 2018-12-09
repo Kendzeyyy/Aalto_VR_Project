@@ -29,7 +29,12 @@ public class Flickr : MonoBehaviour
     private string maxTakenDate = "";
     List<string> flickrpicturelist = new List<string>();
 
+    private ApiTracker apiTracker;
 
+    void Awake()
+    {
+        apiTracker = GetComponent<ApiTracker>();
+    }
 
 
     public IEnumerator OnCollisionEnter(Collision collision)
@@ -107,7 +112,7 @@ public class Flickr : MonoBehaviour
 
             }
             //access list of pictures with certain api request like this
-            using (WWW xxx = new WWW(flickrpicturelist[0]))
+            using (WWW xxx = new WWW(flickrpicturelist[apiTracker.apiCount]))
             {
                 yield return xxx;
                 xxx.LoadImageIntoTexture(tex);

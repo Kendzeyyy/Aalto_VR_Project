@@ -6,7 +6,14 @@ public class Movie : MonoBehaviour
 {
     //public VideoClip videoClip;
 
-    private string videoURL = "http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
+    //private string videoURL = "http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
+    private string videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20180227_174537.mp4";
+    //private string videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20181008_210412.mp4";
+
+    private MouseClick mouseClick;
+    private ApiTracker apiTracker; 
+
+    
 
     void Start()
     {
@@ -21,7 +28,29 @@ public class Movie : MonoBehaviour
         videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
         videoPlayer.targetMaterialRenderer = GetComponent<Renderer>();
         videoPlayer.targetMaterialProperty = "_MainTex";
+       
     }
+
+    void Awake()
+    {
+        mouseClick = GetComponent<MouseClick>();
+        apiTracker = GetComponent<ApiTracker>();
+
+    }
+
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (apiTracker.apiCount > 2 && apiTracker.apiCount < 5)
+        {
+            videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20181008_210412.mp4";
+        }
+        else
+        {
+            videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20180227_174537.mp4";
+        }
+    }
+
 
 
 
@@ -40,7 +69,6 @@ public class Movie : MonoBehaviour
                 vp.Play();
             }
         }
-
     }
 
     void EndReached(UnityEngine.Video.VideoPlayer vp)

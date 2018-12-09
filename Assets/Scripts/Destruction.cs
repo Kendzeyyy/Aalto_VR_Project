@@ -14,7 +14,7 @@ public class Destruction : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider){
-		if (collider.gameObject.name == "DestroyCubes"){
+		if (collider.gameObject.name == "2017Collider"){
 			Destroy(gameObject);
 			Instantiate(remains);
 
