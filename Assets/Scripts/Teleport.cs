@@ -33,11 +33,6 @@ public class Teleport : MonoBehaviour {
 		theCube11 = GameObject.FindWithTag("cube11");
 		theCube12 = GameObject.FindWithTag("cube12");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void OnTriggerEnter(Collider collider)
 	{
