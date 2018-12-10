@@ -29,6 +29,8 @@ public class Flickr : MonoBehaviour
     private string maxTakenDate = "";
     List<string> flickrpicturelist = new List<string>();
 
+    private MonthYearValues monthYearValues;
+
 
 
 
@@ -60,20 +62,22 @@ public class Flickr : MonoBehaviour
             "?method=flickr.people.getPhotos" +
             "&api_key={0}" +
             "&user_id={1}" +
-            "&min_upload_date={2}=" +
-            "&max_upload_date={3}" +
-            "&min_taken_date=" +
-            "&max_taken_date=" +
+            "&min_upload_date=" +
+            "&max_upload_date=" +
+            "&min_taken_date={2}" +
+            "&max_taken_date={3}" +
             "&content_type=" +
             "&format=json" +
             "&nojsoncallback=1";
 
 
-        //these can be set from cubes' values .. so tag them here. now hardcoded.
-        minUploadDate = "24.11.2018";
-        maxUploadDate = "31.12.2018";
+        //these can be set from cubes' values .. so tag them here.
+        //use taken dates instead of upload dates for easier modification.
+       // minTakenDate = "1.11.2017";
+        //maxTakenDate = "31.12.2017";
 
-        var baseUrl = string.Format(url, myApiKey, userid, minUploadDate, maxUploadDate);
+        //var baseUrl = string.Format(url, myApiKey, userid, minTakenDate, maxTakenDate);
+        var baseUrl = string.Format(url, myApiKey, userid, monthYearValues.apiStartTakenDay, monthYearValues.apiEndTakenDay);
         Debug.Log("this is the api url request BASEURL " + baseUrl);
 
         //ok so httpwebreq cant handle SHA256 Certificate, use unitywebrequest or www instead. 
@@ -107,6 +111,7 @@ public class Flickr : MonoBehaviour
 
             }
             //access list of pictures with certain api request like this
+            //ATM accessing only 1st picture of the list... modify the way to see them all before changing this!
             using (WWW xxx = new WWW(flickrpicturelist[0]))
             {
                 yield return xxx;
