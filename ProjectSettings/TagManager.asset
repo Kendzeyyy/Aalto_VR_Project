@@ -3,7 +3,34 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Screen2
+  - cube11
+  - cube5
+  - Year
+  - RemainsCube
+  - cube6
+  - cube12
+  - Screen1
+  - cube8
+  - cube10
+  - cube4
+  - cube7
+  - cube3
+  - cube2
+  - Screen3
+  - cube9
+  - cube1
+  - Flicker
+  - 2019
+  - 2018
+  - 2017
+  - 2016
+  - 2015
+  - 2014
+  - 2013
+  - 2012
+  - strapCubes
   layers:
   - Default
   - TransparentFX
