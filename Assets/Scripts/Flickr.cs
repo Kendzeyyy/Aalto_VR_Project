@@ -28,15 +28,11 @@ public class Flickr : MonoBehaviour
     private string minTakenDate = "";
     private string maxTakenDate = "";
     List<string> flickrpicturelist = new List<string>();
-
-    private MonthYearValues monthYearValues;
-
-
-
+    
 
     public IEnumerator OnCollisionEnter(Collision collision)
     {
-        //texture things..in unity.
+      
         Texture2D tex;
         tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
 
@@ -71,13 +67,23 @@ public class Flickr : MonoBehaviour
             "&nojsoncallback=1";
 
 
-        //these can be set from cubes' values .. so tag them here.
-        //use taken dates instead of upload dates for easier modification.
-       // minTakenDate = "1.11.2017";
-        //maxTakenDate = "31.12.2017";
+        //use taken dates instead of upload dates for easier modification. done beforehand on flickr pics.
+        // minTakenDate = "2017-8-1";    yyyy-mm-dd
+        //maxTakenDate = "2017-8-16";
 
-        //var baseUrl = string.Format(url, myApiKey, userid, minTakenDate, maxTakenDate);
-        var baseUrl = string.Format(url, myApiKey, userid, monthYearValues.apiStartTakenDay, monthYearValues.apiEndTakenDay);
+        //access other script like this
+        MonthYearValues myv = gameObject.AddComponent<MonthYearValues>();
+        FlickrValues fv = gameObject.AddComponent<FlickrValues>();
+        myv.Load();
+        //dont run it again, just access values like this.
+        MonthYearValues myv1 = gameObject.GetComponent<MonthYearValues>();
+      
+        //get values from files
+        minTakenDate = myv1.apiStartTakenDay;
+        maxTakenDate = myv1.apiEndTakenDay;
+
+        Debug.Log("monthyearvalues apistarttakenday...: " + minTakenDate + maxTakenDate);
+        var baseUrl = string.Format(url, myApiKey, userid, minTakenDate, maxTakenDate);
         Debug.Log("this is the api url request BASEURL " + baseUrl);
 
         //ok so httpwebreq cant handle SHA256 Certificate, use unitywebrequest or www instead. 
@@ -119,9 +125,7 @@ public class Flickr : MonoBehaviour
                 GetComponent<Renderer>().material.mainTexture = tex;
             }
         }
-
-
-
+  
     }
 
     // Update is called once per frame

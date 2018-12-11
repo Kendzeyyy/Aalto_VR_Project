@@ -31,6 +31,26 @@ TagManager:
   - 2013
   - 2012
   - strapCubes
+  - Des2017
+  - Des2018
+  - Des2019
+  - Des2015
+  - Des2016
+  - Des2014
+  - Des2013
+  - Des2012
+  - Jan
+  - Feb
+  - Mar
+  - Apr
+  - May
+  - Jun
+  - Jul
+  - Aug
+  - Sep
+  - Oct
+  - Nov
+  - Dec
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using Assets.Scripts;
 using UnityEngine;
 
@@ -46,6 +49,7 @@ public class MonthYearValues : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+       
         //1 = January, 2 = Feb ... and so on. 
         theCube1 = GameObject.FindWithTag("cube1");
         theCube2 = GameObject.FindWithTag("cube2");
@@ -70,120 +74,222 @@ public class MonthYearValues : MonoBehaviour
         year2018 = GameObject.Find("2018Collider");
         year2019 = GameObject.Find("2019Collider");
 
-        startMonthValue = "";
+      /*  startMonthValue = "";
         endMonthValue = "";
         yearValue = "";
 
         apiStartTakenDay = "";
-        apiEndTakenDay = "";
+        apiEndTakenDay = "";*/
     }
 
 
     void OnTriggerEnter(Collider collider)
 
-
         //add this script to colliders and finish years and build final apiqueue string with stringbuilder
 
     {
-        if (collider.gameObject.tag == "cube1")
+        //FlickrValues flickrValues = new FlickrValues();
+        FlickrValues flickrValues = gameObject.AddComponent<FlickrValues>();
+
+        Debug.Log("HIT WITH " + collider);
+        //if (collider.gameObject.tag == "cube1") changing this
+        if (collider.gameObject.tag == "Jan")
         {
             Debug.Log("okok you hit with cube1 aka January!!");
-            startMonthValue = "1.1.";
-            endMonthValue = "31.1.";
+            startMonthValue = "1-1";
+            endMonthValue = "1-31";
+            SaveDate();
 
         }
-        else if (collider.gameObject.tag == "cube2")
+        else if (collider.gameObject.tag == "Feb")
         {
-            startMonthValue = "1.2.";
-            endMonthValue = "28.2.";
+            startMonthValue = "2-1";
+            endMonthValue = "2-28";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube3")
+        else if (collider.gameObject.tag == "Mar")
         {
-            startMonthValue = "1.3.";
-            endMonthValue = "31.3.";
+            startMonthValue = "3-1";
+            endMonthValue = "3-31";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube4")
+        else if (collider.gameObject.tag == "Apr")
         {
-            startMonthValue = "1.4.";
-            endMonthValue = "30.4.";
+            startMonthValue = "4-1";
+            endMonthValue = "4-30";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube5")
+        else if (collider.gameObject.tag == "May")
         {
-            startMonthValue = "1.5.";
-            endMonthValue = "31.5.";
+            startMonthValue = "5-1";
+            endMonthValue = "5-31";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube6")
+        else if (collider.gameObject.tag == "Jun")
         {
-            startMonthValue = "1.6.";
-            endMonthValue = "30.6.";
+            startMonthValue = "6-1";
+            endMonthValue = "6-30";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube7")
+        else if (collider.gameObject.tag == "Jul")
         {
-            startMonthValue = "1.7.";
-            endMonthValue = "31.7.";
+            startMonthValue = "7-1";
+            endMonthValue = "7-31";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube8")
+        else if (collider.gameObject.tag == "Aug")
         {
-            startMonthValue = "1.8.";
-            endMonthValue = "31.8.";
+            startMonthValue = "8-1";
+            endMonthValue = "8-31";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube9")
+        else if (collider.gameObject.tag == "Sep")
         {
-            startMonthValue = "1.9.";
-            endMonthValue = "30.9.";
+            startMonthValue = "9-1";
+            endMonthValue = "9-30";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube10")
+        else if (collider.gameObject.tag == "Oct")
         {
-            startMonthValue = "1.10.";
-            endMonthValue = "31.10.";
+            startMonthValue = "10-1";
+            endMonthValue = "10-31";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube11")
+        else if (collider.gameObject.tag == "Nov")
         {
-            startMonthValue = "1.11.";
-            endMonthValue = "30.11.";
+            startMonthValue = "11-1.";
+            endMonthValue = "11-30";
+            SaveDate();
         }
-        else if (collider.gameObject.tag == "cube12")
+        else if (collider.gameObject.tag == "Dec")
         {
-            startMonthValue = "1.12.";
-            endMonthValue = "31.12.";
+            startMonthValue = "12-1";
+            endMonthValue = "12-31";
+            SaveDate();
         }
         //now for the years
-        else if (collider.gameObject.name == "2012Collider")
+        //else if (collider.gameObject.tag == "Des2012")  temp....
+        else if (collider.gameObject.name == "Collider2012")
         {
-            yearValue = "2012";
+            yearValue = "2012-";
+            SaveYear();
         }
-        else if (collider.gameObject.name == "2013Collider")
+        else if (collider.gameObject.name == "Collider2013")
         {
-            yearValue = "2013";
+            yearValue = "2013-";
+            SaveYear();
         }
-        else if (collider.gameObject.name == "2014Collider")
+        else if (collider.gameObject.name == "Collider2014")
         {
-            yearValue = "2014";
+            yearValue = "2014-";
+            SaveYear();
         }
-        else if (collider.gameObject.name == "2015Collider")
+        else if (collider.gameObject.name == "Collider2015")
         {
-            yearValue = "2015";
+            yearValue = "2015-";
+            SaveYear();
         }
-        else if (collider.gameObject.name == "2016Collider")
+        else if (collider.gameObject.name == "Collider2016")
         {
-            yearValue = "2016";
+            yearValue = "2016-";
+            SaveYear();
         }
-        else if (collider.gameObject.name == "2017Collider")
+        else if (collider.gameObject.name == "Collider2017")
         {
-            yearValue = "2017";
+            yearValue = "2017-";
+            SaveYear();
         }
-        else if (collider.gameObject.name == "2018Collider")
+        else if (collider.gameObject.name == "Collider2018")
         {
-            yearValue = "2018";
+            yearValue = "2018-";
+            SaveYear();
         }
-        else if (collider.gameObject.name == "2019Collider")
+        else if (collider.gameObject.name == "Collider2019")
         {
-            yearValue = "2019";
+            yearValue = "2019-";
+            SaveYear();
         }
 
-        apiStartTakenDay = startMonthValue + yearValue;
-        apiEndTakenDay = endMonthValue + yearValue;
-        Debug.Log("okay so these are the values for flickr api! : apistartday: " + apiStartTakenDay + " and end: " + apiEndTakenDay);
+    }
+
+    public void SaveDate()
+    {
+        TextWriter tw = new StreamWriter("SavedFirstDate.txt");
+        TextWriter tw1 = new StreamWriter("SavedLastDate.txt");
+        //saving to text files because so easy. sorry for inconvinience. 
+        //BinaryFormatter bf = new BinaryFormatter();
+        //FileStream file = File.Create(Application.persistentDataPath + "/flickrValues.txt");
+        Debug.Log("SAVING VALUES SM EM: " + startMonthValue + endMonthValue);
+     
+        //FlickrValues values = new FlickrValues();
+        FlickrValues values = gameObject.AddComponent<FlickrValues>();
+       
+        values.startMonthValue = startMonthValue;
+        values.endMonthValue = endMonthValue;
+        // values.yearValue = yearValue;
+        Debug.Log("SAVING VALUES TTOOOO SM EM: " + values.startMonthValue + values.endMonthValue);
+        tw.WriteLine(values.startMonthValue);
+        tw1.WriteLine(values.endMonthValue);
+
+        //values.apiStartTakenDay = startMonthValue + yearValue;
+        //values.apiEndTakenDay = endMonthValue + yearValue;
+        //Debug.Log("SAVING VALUES valuesapistart + apiend: " + values.apiStartTakenDay + values.apiEndTakenDay );
+        //bf.Serialize(file, values);
+        //file.Close();
+        tw.Close();
+        tw1.Close();
+    }
+    public void SaveYear()
+    {
+        //BinaryFormatter bf = new BinaryFormatter();
+
+        TextWriter tw = new StreamWriter("SavedYears.txt");
+        //if (!tw.Exists(Application.persistentDataPath + "/flickrValues.txt"))       
+        //file = File.Create(Application.persistentDataPath + "/flickrValues.txt");
+                
+        Debug.Log("SAVING VALUES Y: " + yearValue);
+        
+        //FlickrValues values = new FlickrValues();
+        FlickrValues values = gameObject.AddComponent<FlickrValues>();
+        values.yearValue = yearValue;
+        tw.WriteLine(values.yearValue);
+
+        //values.apiStartTakenDay = startMonthValue + yearValue;
+        //values.apiEndTakenDay = endMonthValue + yearValue;
+        //Debug.Log("SAVING VALUES valuesapistart + apiend: " + values.apiStartTakenDay + values.apiEndTakenDay );
+        //bf.Serialize(file, values);
+        //file.Close();
+        tw.Close();
+    }
+
+    public void Load()
+    {
+        /*if (File.Exists(Application.persistentDataPath + "/flickrValues.txt"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/flickrValues.txt", FileMode.Open);
+            FlickrValues values = (FlickrValues)bf.Deserialize(file);
+            file.Close();
+     
+        }*/
+        FlickrValues values = gameObject.AddComponent<FlickrValues>();
+        TextReader tr = new StreamReader("SavedFirstDate.txt");
+        TextReader tr1 = new StreamReader("SavedLastDate.txt");
+        TextReader tr2 = new StreamReader("SavedYears.txt");
+        string a = tr.ReadLine();
+        string b = tr1.ReadLine();
+        string c = tr2.ReadLine();
+   
+        Debug.Log("THIS IS LOADING AND READING FROM FILE: ALL " + a + b + c);
+        Debug.Log("THIS IS LOADING AND READING FROM FILE   A: " + a );
+        Debug.Log("THIS IS LOADING AND READING FROM FILE:  B: " + b);
+        Debug.Log("THIS IS LOADING AND READING FROM FILE:  C: " + c);
+        tr.Close();
+        tr1.Close();
+        tr2.Close();
+        apiStartTakenDay = c + a;
+        apiEndTakenDay = c + b;
+       
     }
 
 
@@ -192,4 +298,16 @@ public class MonthYearValues : MonoBehaviour
     {
 
     }
+    
+}
+
+//[Serializable]
+class FlickrValues : MonoBehaviour
+{
+    public string startMonthValue;
+    public string endMonthValue;
+    public string yearValue;
+    public string apiStartTakenDay;
+    public string apiEndTakenDay;
+
 }
