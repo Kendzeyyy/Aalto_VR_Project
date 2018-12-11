@@ -31,6 +31,7 @@ TagManager:
   - 2013
   - 2012
   - strapCubes
+  - Reset
   layers:
   - Default
   - TransparentFX
