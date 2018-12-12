@@ -20,7 +20,7 @@ public class Destruction : MonoBehaviour {
     }
 
 	void OnTriggerEnter(Collider collider){
-		if (collider.gameObject.tag == "2019")
+		if (collider.gameObject.tag.StartsWith("Des20"))
 		{
 			Vector3 temp = gameObject.transform.position;
 			Destroy(gameObject);

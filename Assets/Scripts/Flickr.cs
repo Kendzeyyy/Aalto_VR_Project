@@ -28,13 +28,11 @@ public class Flickr : MonoBehaviour
     private string minTakenDate = "";
     private string maxTakenDate = "";
     List<string> flickrpicturelist = new List<string>();
-
-
-
+    
 
     public IEnumerator OnCollisionEnter(Collision collision)
     {
-        //texture things..in unity.
+      
         Texture2D tex;
         tex = new Texture2D(4, 4, TextureFormat.DXT1, false);
 
@@ -60,20 +58,32 @@ public class Flickr : MonoBehaviour
             "?method=flickr.people.getPhotos" +
             "&api_key={0}" +
             "&user_id={1}" +
-            "&min_upload_date={2}=" +
-            "&max_upload_date={3}" +
-            "&min_taken_date=" +
-            "&max_taken_date=" +
+            "&min_upload_date=" +
+            "&max_upload_date=" +
+            "&min_taken_date={2}" +
+            "&max_taken_date={3}" +
             "&content_type=" +
             "&format=json" +
             "&nojsoncallback=1";
 
 
-        //these can be set from cubes' values .. so tag them here. now hardcoded.
-        minUploadDate = "24.11.2018";
-        maxUploadDate = "31.12.2018";
+        //use taken dates instead of upload dates for easier modification. done beforehand on flickr pics.
+        // minTakenDate = "2017-8-1";    yyyy-mm-dd
+        //maxTakenDate = "2017-8-16";
 
-        var baseUrl = string.Format(url, myApiKey, userid, minUploadDate, maxUploadDate);
+        //access other script like this
+        MonthYearValues myv = gameObject.AddComponent<MonthYearValues>();
+        FlickrValues fv = gameObject.AddComponent<FlickrValues>();
+        myv.Load();
+        //dont run it again, just access values like this.
+        MonthYearValues myv1 = gameObject.GetComponent<MonthYearValues>();
+      
+        //get values from files
+        minTakenDate = myv1.apiStartTakenDay;
+        maxTakenDate = myv1.apiEndTakenDay;
+
+        Debug.Log("monthyearvalues apistarttakenday...: " + minTakenDate + maxTakenDate);
+        var baseUrl = string.Format(url, myApiKey, userid, minTakenDate, maxTakenDate);
         Debug.Log("this is the api url request BASEURL " + baseUrl);
 
         //ok so httpwebreq cant handle SHA256 Certificate, use unitywebrequest or www instead. 
@@ -107,6 +117,7 @@ public class Flickr : MonoBehaviour
 
             }
             //access list of pictures with certain api request like this
+            //ATM accessing only 1st picture of the list... modify the way to see them all before changing this!
             using (WWW xxx = new WWW(flickrpicturelist[0]))
             {
                 yield return xxx;
@@ -114,9 +125,7 @@ public class Flickr : MonoBehaviour
                 GetComponent<Renderer>().material.mainTexture = tex;
             }
         }
-
-
-
+  
     }
 
     // Update is called once per frame
