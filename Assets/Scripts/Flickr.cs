@@ -112,7 +112,8 @@ public class Flickr : MonoBehaviour
 
             }
             //access list of pictures with certain api request like this
-            using (WWW xxx = new WWW(flickrpicturelist[apiTracker.apiCount]))
+            // loop through the pictures in a ring
+            using (WWW xxx = new WWW(flickrpicturelist[apiTracker.apiCount % flickrpicturelist.Count]))
             {
                 yield return xxx;
                 xxx.LoadImageIntoTexture(tex);

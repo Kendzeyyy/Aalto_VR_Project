@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Movie : MonoBehaviour
 {
-    //public VideoClip videoClip;
 
-    //private string videoURL = "http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
-    private string videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20180227_174537.mp4";
-    //private string videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20181008_210412.mp4";
+    private List<Video> movieList = new List<Video>
+    {
+        new Video() { VideoURL = "https://www.jwiedmann-it.de/videos/Arrival%20Trailer%20(2016)%20-%20Paramount%20Pictures.mp4"},
+        new Video() { VideoURL = "https://www.jwiedmann-it.de/videos/Blue%20Planet%20II%20%20The%20Prequel.mp4"},
+        new Video() { VideoURL = "https://www.jwiedmann-it.de/videos/SUPERHERO%20BABIES%20ENJOY%20MOVIE%20_%20POPCORN%20%e2%9d%a4%20SUPERHERO%20PLAY%20DOH%20CARTOONS%20FOR%20KIDS.mp4"},
+        new Video() { VideoURL = "https://www.jwiedmann-it.de/videos/The%20Century%20of%20the%20Self%20-%20Part%201%20Happiness%20Machines.mp4"}
+    };
 
-    private MouseClick mouseClick;
-    private ApiTracker apiTracker; 
+    private MouseClick mouseClick; //TODO for selection o stop videos and stuff 
+    private ApiTracker apiTracker;
+
+    private string currentVideoURL;
 
     
 
@@ -23,7 +30,7 @@ public class Movie : MonoBehaviour
         videoPlayer.isLooping = true;
 
         videoPlayer.playOnAwake = true;
-        videoPlayer.url = videoURL;
+        videoPlayer.url = currentVideoURL;
         //videoPlayer.clip = videoClip;
         videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
         videoPlayer.targetMaterialRenderer = GetComponent<Renderer>();
@@ -31,9 +38,11 @@ public class Movie : MonoBehaviour
        
     }
 
+    
+
     void Awake()
     {
-        mouseClick = GetComponent<MouseClick>();
+        mouseClick = GetComponent<MouseClick>(); //TODO for selection o stop videos and stuff 
         apiTracker = GetComponent<ApiTracker>();
 
     }
@@ -41,14 +50,7 @@ public class Movie : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (apiTracker.apiCount > 2 && apiTracker.apiCount < 5)
-        {
-            videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20181008_210412.mp4";
-        }
-        else
-        {
-            videoURL = "C:\\Users\\jerem\\OneDrive\\Desktop\\VID_20180227_174537.mp4";
-        }
+        currentVideoURL = movieList[apiTracker.apiCount % movieList.Count].VideoURL;
     }
 
 
@@ -74,5 +76,11 @@ public class Movie : MonoBehaviour
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
         vp.playbackSpeed = vp.playbackSpeed / 10.0F;
+    }
+
+    internal class Video 
+    {
+        public string VideoURL { get; set; }
+
     }
 }
