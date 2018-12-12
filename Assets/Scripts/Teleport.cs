@@ -214,5 +214,11 @@ public class Teleport : MonoBehaviour {
 		{
 			theCube12.transform.position = teleportTarget.transform.position;
 		}
+		else if (collider.gameObject.name == "ResetCube")
+		{
+			GameObject ResetCube;
+			ResetCube = GameObject.Find("ResetCube");
+			ResetCube.transform.position = teleportTarget.transform.position;
+		}
 	}
 }
