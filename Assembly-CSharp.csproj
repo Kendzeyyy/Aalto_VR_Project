@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\MonthYearValues.cs" />
      <Compile Include="Assets\Scripts\Movie.cs" />
      <Compile Include="Assets\Scripts\MovingCube.cs" />
+     <Compile Include="Assets\Scripts\Reset.cs" />
      <Compile Include="Assets\Scripts\Secrets.cs" />
      <Compile Include="Assets\Scripts\Teleport.cs" />
      <Compile Include="Assets\Scripts\Texts.cs" />

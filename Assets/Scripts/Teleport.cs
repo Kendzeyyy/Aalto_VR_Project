@@ -223,7 +223,7 @@ public class Teleport : MonoBehaviour {
 			GameObject ResetCube;
 			ResetCube = GameObject.Find("ResetCube");
             Debug.Log("Reset scene");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ResetCube.transform.position = teleportTarget.transform.position;
         }
 	}
 }
