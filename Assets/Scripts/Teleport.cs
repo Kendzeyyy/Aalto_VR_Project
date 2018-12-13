@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour {
 
@@ -214,11 +215,15 @@ public class Teleport : MonoBehaviour {
 		{
 			theCube12.transform.position = teleportTarget.transform.position;
 		}
+
+
+        // Reset cube
 		else if (collider.gameObject.name == "ResetCube")
 		{
 			GameObject ResetCube;
 			ResetCube = GameObject.Find("ResetCube");
-			ResetCube.transform.position = teleportTarget.transform.position;
-		}
+            Debug.Log("Reset scene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 	}
 }
