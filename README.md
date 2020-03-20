@@ -30,3 +30,7 @@ The project was strongly focused on usability so it's easy for everyone! Also th
 - Kendy Nguyen [Kendzeyyy](https://github.com/Kendzeyyy)
 - Mikael Meinander [mmickee1](https://github.com/mmickee1)
 - Jeremias Wiedmann [Wheedman](https://github.com/Wheedman)
+
+### Product Owner
+
+- Jana Pejoska
